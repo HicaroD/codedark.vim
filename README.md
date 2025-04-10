@@ -1,2 +1,7 @@
 # codedark.vim
-A minimal, distraction-free dark colorscheme for Vim and Neovim, inspired by the Code Dark aesthetic.
+
+This project is a fork of
+[tomasiser/vim-code-dark](https://github.com/tomasiser/vim-code-dark) work.
+
+My work was to get rid of Treesitter support and some instructions that only
+work highlight groups exposed by external dependencies.
