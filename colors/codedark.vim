@@ -317,16 +317,3 @@ call <sid>hi('cssStyle', s:cdLightBlue, {}, 'none', {})
 call <sid>hi('cssImportant', s:cdBlue, {}, 'none', {})
 call <sid>hi('cssSelectorOp', s:cdFront, {}, 'none', {})
 call <sid>hi('cssKeyFrameProp2', s:cdLightGreen, {}, 'none', {})
-
-" GIT (built-in)
-call <sid>hi('gitcommitHeader', s:cdGray, {}, 'none', {})
-call <sid>hi('gitcommitOnBranch', s:cdGray, {}, 'none', {})
-call <sid>hi('gitcommitBranch', s:cdBlue, {}, 'none', {})
-call <sid>hi('gitcommitComment', s:cdGray, {}, 'none', {})
-call <sid>hi('gitcommitSelectedType', s:cdBlue, {}, 'none', {})
-hi! link gitcommitSelectedFile gitcommitSelectedType
-call <sid>hi('gitcommitDiscardedType', s:cdBlue, {}, 'none', {})
-hi! link gitcommitDiscardedFile gitcommitDiscardedType
-hi! link gitcommitOverflow gitcommitDiscardedType
-call <sid>hi('gitcommitSummary', s:cdBlue, {}, 'none', {})
-call <sid>hi('gitcommitBlank', s:cdBlue, {}, 'none', {})
