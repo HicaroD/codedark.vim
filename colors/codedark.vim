@@ -323,9 +323,9 @@ call <sid>hi('gitcommitHeader', s:cdGray, {}, 'none', {})
 call <sid>hi('gitcommitOnBranch', s:cdGray, {}, 'none', {})
 call <sid>hi('gitcommitBranch', s:cdBlue, {}, 'none', {})
 call <sid>hi('gitcommitComment', s:cdGray, {}, 'none', {})
-call <sid>hi('gitcommitSelectedType', s:cdGreen, {}, 'none', {})
+call <sid>hi('gitcommitSelectedType', s:cdBlue, {}, 'none', {})
 hi! link gitcommitSelectedFile gitcommitSelectedType
-call <sid>hi('gitcommitDiscardedType', s:cdRed, {}, 'none', {})
+call <sid>hi('gitcommitDiscardedType', s:cdBlue, {}, 'none', {})
 hi! link gitcommitDiscardedFile gitcommitDiscardedType
 hi! link gitcommitOverflow gitcommitDiscardedType
 call <sid>hi('gitcommitSummary', s:cdBlue, {}, 'none', {})
