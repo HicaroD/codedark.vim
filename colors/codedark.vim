@@ -124,21 +124,12 @@ let s:cdSearch = {'gui': '#773800', 'cterm': s:cterm03, 'cterm256': '94'}
 
 " Syntax colors:
 
-if !exists("g:codedark_conservative")
-    let g:codedark_conservative=0
-endif
-
-" Italicized comments
-if !exists("g:codedark_italics")
-    let g:codedark_italics=0
-endif
-
 let s:cdGray = {'gui': '#808080', 'cterm': s:cterm04, 'cterm256': '08'}
 let s:cdViolet = {'gui': '#646695', 'cterm': s:cterm04, 'cterm256': '60'}
+let s:cdGreen = {'gui': '#6A9955', 'cterm': s:cterm0B, 'cterm256': '65'}
 let s:cdBlue = {'gui': '#569CD6', 'cterm': s:cterm0D, 'cterm256': '75'}
 let s:cdDarkBlue = {'gui': '#223E55', 'cterm': s:cterm0D, 'cterm256': '73'}
 let s:cdLightBlue = {'gui': '#9CDCFE', 'cterm': s:cterm0C, 'cterm256': '117'}
-if g:codedark_conservative | let s:cdLightBlue = s:cdFront | endif
 let s:cdGreen = {'gui': '#6A9955', 'cterm': s:cterm0B, 'cterm256': '65'}
 let s:cdBlueGreen = {'gui': '#4EC9B0', 'cterm': s:cterm0F, 'cterm256': '43'}
 let s:cdLightGreen = {'gui': '#B5CEA8', 'cterm': s:cterm09, 'cterm256': '151'}
@@ -146,12 +137,8 @@ let s:cdRed = {'gui': '#F44747', 'cterm': s:cterm08, 'cterm256': '203'}
 if g:codedark_modern | let s:cdRed = {'gui': '#f85149', 'cterm': s:cterm08, 'cterm256': '203'} | endif
 let s:cdOrange = {'gui': '#CE9178', 'cterm': s:cterm0F, 'cterm256': '173'}
 let s:cdLightRed = {'gui': '#D16969', 'cterm': s:cterm08, 'cterm256': '167'}
-if g:codedark_conservative | let s:cdLightRed = s:cdOrange | endif
 let s:cdYellowOrange = {'gui': '#D7BA7D', 'cterm': s:cterm0A, 'cterm256': '179'}
 let s:cdYellow = {'gui': '#DCDCAA', 'cterm': s:cterm0A, 'cterm256': '187'}
-if g:codedark_conservative | let s:cdYellow = s:cdFront | endif
-let s:cdPink = {'gui': '#C586C0', 'cterm': s:cterm0E, 'cterm256': '176'}
-if g:codedark_conservative | let s:cdPink = s:cdBlue | endif
 let s:cdSilver = {'gui': '#C0C0C0', 'cterm': s:cterm05, 'cterm256': '7'}
 
 " UI (built-in)
@@ -203,7 +190,7 @@ hi! link diffAdded DiffAdd
 hi! link diffChanged DiffChange
 hi! link diffRemoved DiffDelete
 
-if g:codedark_italics | call <sid>hi('Comment', s:cdGreen, {}, 'italic', {}) | else | call <sid>hi('Comment', s:cdGreen, {}, 'none', {}) | endif
+call <sid>hi('Comment', s:cdGreen, {}, 'none', {})
 
 " SYNTAX HIGHLIGHT (built-in)
 call <sid>hi('Constant', s:cdBlue, {}, 'none', {})
@@ -212,20 +199,20 @@ call <sid>hi('Character', s:cdOrange, {}, 'none', {})
 call <sid>hi('Number', s:cdLightGreen, {}, 'none', {})
 call <sid>hi('Boolean', s:cdBlue, {}, 'none', {})
 hi! link Float Number
-call <sid>hi('Identifier', s:cdLightBlue, {}, 'none', {})
-call <sid>hi('Function', s:cdYellow, {}, 'none', {})
-call <sid>hi('Statement', s:cdPink, {}, 'none', {})
-call <sid>hi('Conditional', s:cdPink, {}, 'none', {})
-call <sid>hi('Repeat', s:cdPink, {}, 'none', {})
-call <sid>hi('Label', s:cdPink, {}, 'none', {})
+call <sid>hi('Identifier', s:cdFront, {}, 'none', {})
+call <sid>hi('Function', s:cdFront, {}, 'none', {})
+call <sid>hi('Statement', s:cdBlue, {}, 'none', {})
+call <sid>hi('Conditional', s:cdBlue, {}, 'none', {})
+call <sid>hi('Repeat', s:cdBlue, {}, 'none', {})
+call <sid>hi('Label', s:cdBlue, {}, 'none', {})
 call <sid>hi('Operator', s:cdFront, {}, 'none', {})
-call <sid>hi('Keyword', s:cdPink, {}, 'none', {})
-call <sid>hi('Exception', s:cdPink, {}, 'none', {})
-call <sid>hi('PreProc', s:cdPink, {}, 'none', {})
-call <sid>hi('Include', s:cdPink, {}, 'none', {})
-call <sid>hi('Define', s:cdPink, {}, 'none', {})
-call <sid>hi('Macro', s:cdPink, {}, 'none', {})
-call <sid>hi('PreCondit', s:cdPink, {}, 'none', {})
+call <sid>hi('Keyword', s:cdBlue, {}, 'none', {})
+call <sid>hi('Exception', s:cdBlue, {}, 'none', {})
+call <sid>hi('PreProc', s:cdBlue, {}, 'none', {})
+call <sid>hi('Include', s:cdBlue, {}, 'none', {})
+call <sid>hi('Define', s:cdBlue, {}, 'none', {})
+call <sid>hi('Macro', s:cdBlue, {}, 'none', {})
+call <sid>hi('PreCondit', s:cdBlue, {}, 'none', {})
 call <sid>hi('Type', s:cdBlue, {}, 'none', {})
 call <sid>hi('StorageClass', s:cdBlue, {}, 'none', {})
 call <sid>hi('Structure', s:cdBlue, {}, 'none', {})
@@ -234,17 +221,6 @@ call <sid>hi('Special', s:cdYellowOrange, {}, 'none', {})
 call <sid>hi('SpecialChar', s:cdFront, {}, 'none', {})
 call <sid>hi('Tag', s:cdFront, {}, 'none', {})
 call <sid>hi('Delimiter', s:cdFront, {}, 'none', {})
-if g:codedark_italics | call <sid>hi('SpecialComment', s:cdGreen, {}, 'italic', {}) | else | call <sid>hi('SpecialComment', s:cdGreen, {}, 'none', {}) | endif
-call <sid>hi('Debug', s:cdFront, {}, 'none', {})
-call <sid>hi('Underlined', s:cdNone, {}, 'underline', {})
-call <sid>hi("Conceal", s:cdFront, s:cdBack, 'none', {})
-call <sid>hi('Ignore', s:cdBack, {}, 'none', {})
-call <sid>hi('Error', s:cdRed, s:cdBack, 'undercurl', s:cdRed)
-call <sid>hi('Todo', s:cdNone, s:cdLeftMid, 'none', {})
-call <sid>hi('SpellBad', s:cdRed, s:cdBack, 'undercurl', s:cdRed)
-call <sid>hi('SpellCap', s:cdRed, s:cdBack, 'undercurl', s:cdRed)
-call <sid>hi('SpellRare', s:cdRed, s:cdBack, 'undercurl', s:cdRed)
-call <sid>hi('SpellLocal', s:cdRed, s:cdBack, 'undercurl', s:cdRed)
 
 " NEOVIM
 " Make neovim specific groups load only on Neovim
@@ -256,8 +232,8 @@ if has("nvim")
     call <sid>hi('CmpItemKindVariable', s:cdLightBlue, {}, 'none', {})
     call <sid>hi('CmpItemKindInterface', s:cdLightBlue, {}, 'none', {})
     call <sid>hi('CmpItemKindText', s:cdLightBlue, {}, 'none', {})
-    call <sid>hi('CmpItemKindFunction', s:cdPink, {}, 'none', {})
-    call <sid>hi('CmpItemKindMethod ', s:cdPink, {}, 'none', {})
+    call <sid>hi('CmpItemKindFunction', s:cdBlue, {}, 'none', {})
+    call <sid>hi('CmpItemKindMethod ', s:cdBlue, {}, 'none', {})
     call <sid>hi('CmpItemKindKeyword', s:cdFront, {}, 'none', {})
     call <sid>hi('CmpItemKindProperty', s:cdFront, {}, 'none', {})
     call <sid>hi('CmpItemKindUnit', s:cdFront, {}, 'none', {})
@@ -283,7 +259,7 @@ call <sid>hi('markdownEscape', s:cdYellowOrange, {}, 'none', {})
 
 " ASCIIDOC (built-in)
 call <sid>hi("asciidocAttributeEntry", s:cdYellowOrange, {}, 'none', {})
-call <sid>hi("asciidocAttributeList", s:cdPink, {}, 'none', {})
+call <sid>hi("asciidocAttributeList", s:cdBlue, {}, 'none', {})
 call <sid>hi("asciidocAttributeRef", s:cdYellowOrange, {}, 'none', {})
 call <sid>hi("asciidocHLabel", s:cdBlue, {}, 'bold', {})
 call <sid>hi("asciidocListingBlock", s:cdOrange, {}, 'none', {})
@@ -292,7 +268,7 @@ call <sid>hi("asciidocOneLineTitle", s:cdBlue, {}, 'bold', {})
 call <sid>hi("asciidocPassthroughBlock", s:cdBlue, {}, 'none', {})
 call <sid>hi("asciidocQuotedMonospaced", s:cdOrange, {}, 'none', {})
 call <sid>hi("asciidocTriplePlusPassthrough", s:cdYellow, {}, 'none', {})
-call <sid>hi("asciidocMacro", s:cdPink, {}, 'none', {})
+call <sid>hi("asciidocMacro", s:cdBlue, {}, 'none', {})
 call <sid>hi("asciidocAdmonition", s:cdOrange, {}, 'none', {})
 call <sid>hi("asciidocQuotedEmphasized", s:cdBlue, {}, 'italic', {})
 call <sid>hi("asciidocQuotedEmphasized2", s:cdBlue, {}, 'italic', {})
@@ -317,19 +293,9 @@ call <sid>hi('htmlTagName', s:cdBlue, {}, 'none', {})
 hi! link htmlSpecialTagName htmlTagName
 call <sid>hi('htmlArg', s:cdLightBlue, {}, 'none', {})
 
-" PHP (built-in)
-call <sid>hi('phpClass', s:cdBlueGreen, {}, 'none', {})
-hi! link phpUseClass phpClass
-hi! link phpStaticClasses phpClass
-call <sid>hi('phpMethod', s:cdYellow, {}, 'none', {})
-call <sid>hi('phpFunction', s:cdYellow, {}, 'none', {})
-call <sid>hi('phpInclude', s:cdBlue, {}, 'none', {})
-call <sid>hi('phpRegion', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('phpMethodsVar', s:cdLightBlue, {}, 'none', {})
-
 " CSS (built-in)
 call <sid>hi('cssBraces', s:cdFront, {}, 'none', {})
-call <sid>hi('cssInclude', s:cdPink, {}, 'none', {})
+call <sid>hi('cssInclude', s:cdBlue, {}, 'none', {})
 call <sid>hi('cssTagName', s:cdBlue, {}, 'none', {})
 call <sid>hi('cssClassName', s:cdYellowOrange, {}, 'none', {})
 call <sid>hi('cssPseudoClass', s:cdYellowOrange, {}, 'none', {})
@@ -355,33 +321,12 @@ call <sid>hi('cssKeyFrameProp2', s:cdLightGreen, {}, 'none', {})
 " GIT (built-in)
 call <sid>hi('gitcommitHeader', s:cdGray, {}, 'none', {})
 call <sid>hi('gitcommitOnBranch', s:cdGray, {}, 'none', {})
-call <sid>hi('gitcommitBranch', s:cdPink, {}, 'none', {})
+call <sid>hi('gitcommitBranch', s:cdBlue, {}, 'none', {})
 call <sid>hi('gitcommitComment', s:cdGray, {}, 'none', {})
-call <sid>hi('gitcommitSelectedType', s:cdGreen, {}, 'none', {})
+call <sid>hi('gitcommitSelectedType', s:cdBlue, {}, 'none', {})
 hi! link gitcommitSelectedFile gitcommitSelectedType
-call <sid>hi('gitcommitDiscardedType', s:cdRed, {}, 'none', {})
+call <sid>hi('gitcommitDiscardedType', s:cdBlue, {}, 'none', {})
 hi! link gitcommitDiscardedFile gitcommitDiscardedType
 hi! link gitcommitOverflow gitcommitDiscardedType
-call <sid>hi('gitcommitSummary', s:cdPink, {}, 'none', {})
-call <sid>hi('gitcommitBlank', s:cdPink, {}, 'none', {})
-
-call <sid>hi('StructDecl', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('UnionDecl', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('ClassDecl', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('TypeRef', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('TypedefDecl', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('TypeAliasDecl', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('EnumDecl', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('TemplateTypeParameter', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('TypeAliasTemplateDecl', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('ClassTemplate', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('ClassTemplatePartialSpecialization', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('FunctionTemplate', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('TemplateRef', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('TemplateTemplateParameter', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('UsingDeclaration', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('MemberRef', s:cdLightBlue, {}, 'italic', {})
-call <sid>hi('MemberRefExpr', s:cdYellow, {}, 'italic', {})
-call <sid>hi('Namespace', s:cdSilver, {}, 'none', {})
-call <sid>hi('NamespaceRef', s:cdSilver, {}, 'none', {})
-call <sid>hi('NamespaceAlias', s:cdSilver, {}, 'none', {})
+call <sid>hi('gitcommitSummary', s:cdBlue, {}, 'none', {})
+call <sid>hi('gitcommitBlank', s:cdBlue, {}, 'none', {})
